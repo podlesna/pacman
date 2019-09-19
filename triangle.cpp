@@ -60,7 +60,7 @@ bool Triangle::frontBloked(const std::vector<std::vector<int> > vec,int xx,int y
 
 void Triangle::slotGameTimer()
 {
-    direction = Direction::NONE;
+
     if(GetAsyncKeyState(VK_LEFT)){
         direction = Direction::LEFT;
     }
@@ -70,7 +70,6 @@ void Triangle::slotGameTimer()
         setRotation(angle); */
     }
     if(GetAsyncKeyState(VK_UP)){
-
         direction = Direction::UP;
     }
     if(GetAsyncKeyState(VK_DOWN)){
@@ -97,29 +96,30 @@ void Triangle::slotGameTimer()
         default:
             assert(false); // should not get here
         }
+     direction = Direction::NONE;
     }
 }
 
 void Triangle::moveUp(){
- setPos(x(),y()-25);
- yy = (y()+12.5)/25;
+ setPos(x(),y()-26);
+ yy = yy-1;
 }
 
 
 void Triangle::moveDown(){
-    setPos(x(),y()+25);
-    yy = (y()+12.5)/25;
+    setPos(x(),y()+26);
+    yy = yy+1;
 }
 
 void Triangle::moveRight(){
-    setPos(x()+25,y());
-    xx = (x()+12.5)/25;
+    setPos(x()+26,y());
+    xx = xx+1;
 }
 
 
 void Triangle::moveLeft(){
-    setPos(x()-25,y());
-    xx = (x()+12.5)/25;
+    setPos(x()-26,y());
+    xx = xx-1;
 }
 
 
